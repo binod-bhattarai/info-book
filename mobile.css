@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 0.02rem;
+  word-spacing: 0.15rem;
+}
+
+html,
+body {
+  background-color: #343d46;
+  color: #f8f8fa;
+}
+
+.container {
+  padding: 1rem 2rem;
+  max-width: 425px;
+  margin: auto;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.2rem;
+  font-size: 2rem;
+  border-bottom: 1px solid #f8f8fa;
+}
+
+#add-person {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 2.5px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.4s;
+  color: #f8f8fa;
+  background-color: #36454f;
+  box-shadow: 0 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+#add-person:hover {
+  background-color: #333333;
+  box-shadow: 0 2px 0px rgba(255, 255, 255, 0.1);
+}
+
+#form {
+  display: none;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  margin: 0.75rem 0;
+}
+
+label {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+  color: #f8f8fa;
+}
+
+label::after {
+  content: '*';
+  margin-left: 3px;
+}
+
+.full-name-required,
+.email-required,
+.phone-required {
+  padding-top: 0.2rem;
+  color: #999999;
+  color: #E26D5A;
+  display: none;
+  font-size: 0.95rem;
+}
+
+#full-name,
+#email,
+#phone,
+#filter {
+  padding: 0.75rem 0.85rem;
+  border: none;
+  border-radius: 2.5px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #232b2b;
+  color: #f8f8fa;
+  width: 100%;
+}
+
+::placeholder {
+  color: #999999;
+}
+
+#submit-btn {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 2.5px;
+  font-size: 0.95rem;
+  outline: none;
+  margin-bottom: 0.75rem;
+  transition: all 0.4s;
+  color: #f8f8fa;
+  background-color: #36454f;
+  box-shadow: 0 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+#submit-btn:hover {
+  background-color: #333333;
+  box-shadow: 0 2px 0px rgba(255, 255, 255, 0.1);
+}
+
+#filter {
+  margin: 1rem 0;
+  padding: 0.75rem 3rem;
+}
+
+.search {
+  position: relative;
+}
+
+.search i {
+  position: absolute;
+  top: 29px;
+  left: 15px;
+  color: #999999;
+}
+
+.single-info {
+  background-color: #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2.5px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+#dlt-icon {
+  cursor: pointer;
+  color: #c0c5ce;
+  font-size: 1.35rem;
+}
+
+.person-info p {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #c0c5ce;
+}
+
+.success {
+  display: none;
+  background-color: #009944;
+  color: #f8f8fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2.5px;
+  position: absolute;
+  top: 90px;
+  right: 33px;
+  font-style: normal;
+}
+
+.success-animation {
+  animation: success 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes success {
+  from {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.deleted {
+  display: none;
+  background-color:#c92c48;
+  color: #f8f8fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2.5px;
+  position: absolute;
+  top: 90px;
+  right: 33px;
+  font-style: normal;
+}
+
+.deleted-animation {
+  animation: deleted 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes deleted {
+  from {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* person info added animation */
+.person-show {
+  animation: show-person 1.15s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show-person {
+  from {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* person info deleted animation */
+.person-delete {
+  animation: delete-person 1.15s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes delete-person {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(250px);
+    opacity: 0;
+  }
+}
+
+/* show form animation */
+.show-form {
+  animation: show-form 0.6s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show-form {
+  from {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* hide form animation */
+.hide-form {
+  animation: hide-form 1.15s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hide-form {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+}
