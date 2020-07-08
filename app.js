@@ -5,12 +5,16 @@ const addBtn = document.querySelector("#add-person"),
   fullName = document.querySelector("#full-name"),
   email = document.querySelector("#email"),
   phone = document.querySelector("#phone"),
+  notes = document.querySelector('#notes'),
   infoSection = document.querySelector("#info-section"),
   requiredFullName = document.querySelector('.full-name-required'),
   requiredEmail = document.querySelector('.email-required'),
   requiredPhone = document.querySelector('.phone-required'),
   success = document.querySelector('.success'),
   deleted = document.querySelector('.deleted');
+
+// directly focusing on the search when the page loads
+filter.autofocus = 'true';
 
 // Load DOM
 document.addEventListener("DOMContentLoaded", function () {
@@ -20,8 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     persons = JSON.parse(localStorage.getItem("persons"));
   }
-
-  persons.forEach(function (person, arr) {
+  persons.forEach(function (person) {
     // create single info div element
     const singleInfo = document.createElement("div");
     singleInfo.className = "single-info";
@@ -40,9 +43,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const paraPhone = document.createElement("p");
     paraPhone.appendChild(document.createTextNode(person.phone));
 
+    const paraNotes = document.createElement("p");
+    paraNotes.appendChild(document.createTextNode(person.notes));
+    if (person.notes !== '') {
+      paraNotes.className = 'note-style';
+    } else {
+      paraPhone.style.paddingBottom = '0';
+    }
+
     personInfo.appendChild(paraFullName);
     personInfo.appendChild(paraEmail);
     personInfo.appendChild(paraPhone);
+    personInfo.appendChild(paraNotes);
 
     singleInfo.appendChild(personInfo);
     singleInfo.innerHTML += `<i id="dlt-icon" class="far fa-trash-alt"></i>`;
@@ -57,6 +69,7 @@ addBtn.addEventListener("click", showForm);
 function showForm() {
   form.className = 'show-form'
   form.style.display = "block";
+  fullName.autofocus = 'true';
 }
 
 // Add Info to the UI
@@ -64,31 +77,26 @@ form.addEventListener("submit", addInfo);
 function addInfo(e) {
   // Prevent the default behavior of submit
   e.preventDefault();
-  if (fullName.value.trim() === "" || email.value.trim() === "" || phone.value.trim() === "") {
+  if (fullName.value.trim() === "" || email.value.trim() === "" || phone.value.trim() === "" || phone.value.length !== 10) {
     if (fullName.value.trim() === '') {
       // Add class
       requiredFullName.className = 'full-name-required';
-      // Add error msg
-      requiredFullName.appendChild(document.createTextNode('Full Name Required *'));
       // show error
       requiredFullName.style.display = 'block';
     }
     if (email.value.trim() === '') {
       // Add class
       requiredEmail.className = 'email-required';
-      // Add error msg
-      requiredEmail.appendChild(document.createTextNode('Email Address Required *'));
       // show error
       requiredEmail.style.display = 'block';
     }
-    if (phone.value.trim() === '') {
+    if (phone.value.trim() === '' || phone.value.length !== 10) {
       // Add class
       requiredPhone.className = 'phone-required';
-      // Add error msg
-      requiredPhone.appendChild(document.createTextNode('Phone Number Required *'));
       // show error
       requiredPhone.style.display = 'block';
     }
+
   } else {
     // create single info div element
     const singleInfo = document.createElement("div");
@@ -108,9 +116,18 @@ function addInfo(e) {
     const paraPhone = document.createElement("p");
     paraPhone.appendChild(document.createTextNode(phone.value));
 
+    const paraNotes = document.createElement("p");
+    paraNotes.appendChild(document.createTextNode(notes.value));
+    if (notes.value !== '') {
+      paraNotes.className = 'note-style';
+    } else {
+      paraPhone.style.paddingBottom = '0';
+    }
+
     personInfo.appendChild(paraFullName);
     personInfo.appendChild(paraEmail);
     personInfo.appendChild(paraPhone);
+    personInfo.appendChild(paraNotes);
 
     singleInfo.appendChild(personInfo);
     singleInfo.innerHTML += `<i id="dlt-icon" class="far fa-trash-alt"></i>`;
@@ -123,6 +140,7 @@ function addInfo(e) {
       fullName: fullName.value,
       email: email.value,
       phone: phone.value,
+      notes: notes.value
     };
 
     // Again hide the form after submitting
@@ -138,6 +156,7 @@ function addInfo(e) {
     fullName.value = "";
     email.value = "";
     phone.value = "";
+    notes.value = '';
 
     // Clear error after submitting
     requiredFullName.style.display = 'none';
@@ -172,11 +191,12 @@ function removeInfo(e) {
     setTimeout(function () {
       e.target.parentElement.remove();
     }, 700);
-    // person deleted animation
+
     deleted.style.display = 'inline-block';
     setTimeout(function () {
       deleted.style.display = 'none';
-    }, 1500);
+    }, 2500);
+
     removeFromLocalStorage(e.target.parentElement);
   }
 }

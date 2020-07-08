@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="mobile.css" />
   <title>Info Book</title>
@@ -19,25 +20,31 @@
     <form id="form">
       <div class="form-group">
         <label for="full-name">Full Name</label>
-        <input type="text" id="full-name" placeholder="Enter full name" />
-        <p class="full-name-required"></p>
+        <input type="text" id="full-name" placeholder="Enter full name" autofocus />
+        <p class="full-name-required">Full Name Required *</p>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="Enter email address" />
-        <p class="email-required"></p>
+        <p class="email-required">Email Address Required *</p>
       </div>
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="text" id="phone" placeholder="Enter phone number" />
-        <p class="phone-required"></p>
+        <input type="number" id="phone" placeholder="Enter phone number" />
+        <i class="country-code">+977</i>
+        <img class="flag" src="flag.png" alt="">
+        <p class="phone-required">Phone Number Required & Should be 10 Digits *</p>
+      </div>
+      <div class="form-group">
+        <label for="notes">Notes</label>
+        <textarea id="notes" placeholder="Notes if any.."></textarea>
       </div>
       <button type="submit" id="submit-btn">
         Submit <i class="fas fa-paper-plane"></i>
       </button>
     </form>
     <div class="search">
-      <input type="search" id="filter" placeholder="Search person/email/phone" />
+      <input type="search" id="filter" placeholder="Search person/email/phone" autofocus />
       <i class="fas fa-search"></i>
     </div>
     <!-- Information section -->
@@ -50,3 +57,4 @@
 </body>
 
 </html>
+<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, sint! -->
