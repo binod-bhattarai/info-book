@@ -116,12 +116,12 @@ label[for="notes"]::after {
   position: absolute;
   top: 24px;
   left: 0px;
-  padding: 0.75rem 2.25rem 0.75rem 0.85rem;
+  padding: 0.75rem 0.85rem 0.75rem 2.5rem;
   background-color:#4f5b66;
   border-top-left-radius: 2.5px;
   border-bottom-left-radius: 2.5px;
   font-style: normal;
-  letter-spacing: 0.09rem;
+  letter-spacing: 0.05rem;
   color: 	#c0c5ce;
 }
 
@@ -131,7 +131,7 @@ label[for="notes"]::after {
   width: 20px;
   position: absolute;
   top: 34px;
-  left: 58px;
+  left: 13px;
   opacity: 0.7;
 }
 
@@ -162,6 +162,7 @@ label[for="notes"]::after {
   color: #f8f8fa;
   line-height: 1.7;
   resize: none;
+  word-spacing: -0.1rem;
 }
 
 #notes::placeholder {
@@ -190,7 +191,7 @@ label[for="notes"]::after {
 
 #filter {
   margin: 1rem 0;
-  padding: 0.75rem 3rem;
+  padding: 0.75rem 0.5rem 0.75rem 2.75rem;
 }
 
 .search {
@@ -229,6 +230,10 @@ label[for="notes"]::after {
 
 .person-info p:first-child {
   text-transform: capitalize;
+}
+
+.person-info p:nth-child(2) {
+  text-transform: lowercase;
 }
 
 .person-info p:nth-child(3) {
@@ -272,7 +277,7 @@ label[for="notes"]::after {
 
 .deleted {
   display: none;
-  background-color:#bf0000;
+  background-color:#d9534f;
   color: #f8f8fa;
   padding: 0.25rem 0.5rem;
   border-radius: 2.5px;
@@ -363,5 +368,19 @@ label[for="notes"]::after {
   to {
     transform: translateY(500px);
     opacity: 0;
+  }
+}
+
+/* Screen size 320px and less */
+@media screen and (max-width: 320px) {
+  .container {
+    padding: 1rem 1.25rem;
+    max-width: 320px;
+  }
+  .deleted {
+    right: 23px;
+  }
+  .success {
+    right: 25px;
   }
 }
