@@ -225,7 +225,7 @@ function search(e) {
   document.querySelectorAll(".person-info").forEach(function (singlePersonInfo) {
     const personFullName = singlePersonInfo.firstElementChild.firstChild.textContent,
       personEmail = singlePersonInfo.firstElementChild.nextElementSibling.firstChild.textContent,
-      personPhone = singlePersonInfo.lastElementChild.firstChild.textContent;
+      personPhone = singlePersonInfo.lastElementChild.previousElementSibling.firstChild.textContent;
     if (personFullName.toLowerCase().indexOf(search) !== -1 || personEmail.toLowerCase().indexOf(search) !== -1 || personPhone.indexOf(search) !== -1) {
       singlePersonInfo.parentElement.style.display = "flex";
     } else {
